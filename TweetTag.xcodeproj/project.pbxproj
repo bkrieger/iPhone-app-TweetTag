@@ -19,6 +19,7 @@
 		C5A154331662B52C00871F13 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C5A154311662B52C00871F13 /* MainStoryboard.storyboard */; };
 		C5A154361662B52C00871F13 /* BTKMasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C5A154351662B52C00871F13 /* BTKMasterViewController.m */; };
 		C5A154391662B52C00871F13 /* BTKDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C5A154381662B52C00871F13 /* BTKDetailViewController.m */; };
+		C5BD4C0F1662BB13004F533C /* BTKTagsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C5BD4C0E1662BB13004F533C /* BTKTagsViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,8 @@
 		C5A154351662B52C00871F13 /* BTKMasterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BTKMasterViewController.m; sourceTree = "<group>"; };
 		C5A154371662B52C00871F13 /* BTKDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BTKDetailViewController.h; sourceTree = "<group>"; };
 		C5A154381662B52C00871F13 /* BTKDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BTKDetailViewController.m; sourceTree = "<group>"; };
+		C5BD4C0D1662BB13004F533C /* BTKTagsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTKTagsViewController.h; sourceTree = "<group>"; };
+		C5BD4C0E1662BB13004F533C /* BTKTagsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTKTagsViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +94,8 @@
 				C5A154311662B52C00871F13 /* MainStoryboard.storyboard */,
 				C5A154341662B52C00871F13 /* BTKMasterViewController.h */,
 				C5A154351662B52C00871F13 /* BTKMasterViewController.m */,
+				C5BD4C0D1662BB13004F533C /* BTKTagsViewController.h */,
+				C5BD4C0E1662BB13004F533C /* BTKTagsViewController.m */,
 				C5A154371662B52C00871F13 /* BTKDetailViewController.h */,
 				C5A154381662B52C00871F13 /* BTKDetailViewController.m */,
 				C5A154201662B52C00871F13 /* Supporting Files */,
@@ -183,6 +188,7 @@
 				C5A1542A1662B52C00871F13 /* BTKAppDelegate.m in Sources */,
 				C5A154361662B52C00871F13 /* BTKMasterViewController.m in Sources */,
 				C5A154391662B52C00871F13 /* BTKDetailViewController.m in Sources */,
+				C5BD4C0F1662BB13004F533C /* BTKTagsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -301,6 +307,7 @@
 				C5A1543E1662B52C00871F13 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
