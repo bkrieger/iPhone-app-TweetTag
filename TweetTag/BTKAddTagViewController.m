@@ -23,6 +23,19 @@
 }
 
 - (void) save {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSArray *unmutableTags = [defaults arrayForKey:@"tags"];
+    NSMutableArray *tags;
+    if (unmutableTags) {
+        tags = [NSMutableArray arrayWithArray:unmutableTags];
+    } else {
+        tags = [NSMutableArray new];
+    }
+
+    [tags addObject:self.tagField.text];
+    [defaults setObject:tags forKey:@"tags"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
     [self back];
 }
 

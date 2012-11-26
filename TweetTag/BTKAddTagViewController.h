@@ -11,6 +11,4 @@
 @interface BTKAddTagViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UINavigationItem *navBarItem;
 @property (weak, nonatomic) IBOutlet UITextField *tagField;
-@property (weak, nonatomic) IBOutlet UITextField *nameField;
-
 @end
