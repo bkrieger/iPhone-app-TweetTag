@@ -22,21 +22,40 @@
     
 }
 
+- (BOOL) isValidHashtag:(NSString*) tag {
+    
+    if(tag.length == 0) {
+        return NO;
+    }
+    
+    NSCharacterSet *unwantedCharacters = [[NSCharacterSet alphanumericCharacterSet] invertedSet];
+    
+    return ([tag rangeOfCharacterFromSet:unwantedCharacters].location == NSNotFound);
+}
+
 - (void) save {
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSArray *unmutableTags = [defaults arrayForKey:@"tags"];
-    NSMutableArray *tags;
-    if (unmutableTags) {
-        tags = [NSMutableArray arrayWithArray:unmutableTags];
+    
+    if([self isValidHashtag:(NSString *) self.tagField.text]) {
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        
+        NSDictionary *unmutableTags = [defaults dictionaryForKey:@"tags"];
+        NSMutableDictionary *tags;
+        if (unmutableTags) {
+            tags = [NSMutableDictionary dictionaryWithDictionary:unmutableTags];
+        } else {
+            tags = [NSMutableDictionary new];
+        }
+        
+        [tags setValue:[NSNumber numberWithBool:YES] forKey:self.tagField.text];
+        [defaults setObject:tags forKey:@"tags"];
+        
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        [self back];
     } else {
-        tags = [NSMutableArray new];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Invalid Hashtag." message:@"Hashtags can only contain alphanumeric characters." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alert show];
     }
 
-    [tags addObject:self.tagField.text];
-    [defaults setObject:tags forKey:@"tags"];
-    [[NSUserDefaults standardUserDefaults] synchronize];
-    
-    [self back];
 }
 
 - (void) back {

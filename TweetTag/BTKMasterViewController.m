@@ -33,11 +33,11 @@
 }
 
 -(void)getTweets {
-//    //Connect to Twitter
-//    NSString *url = @"http://cis195-messages.herokuapp.com/messages";
-//    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
-//    NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
-//    [connection start];
+    //Connect to Twitter
+    NSString *url = @"http://cis195-messages.herokuapp.com/messages";
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
+    NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
+    [connection start];
 }
 
 - (void)didReceiveMemoryWarning
