@@ -53,7 +53,10 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     
     NSDate *object = _objects[indexPath.row];
-    cell.textLabel.text = (NSString*) object;
+//    NSMutableString *title = [NSMutableString stringWithString:@"#"];
+//    [title appendString:(NSString *)object];
+//    cell.textLabel.text = title;
+    cell.textLabel.text = (NSString *)object;
     if([[_dictObjects valueForKey:(NSString*) object] boolValue]) {
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
     } else {
