@@ -53,10 +53,10 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     
     NSDate *object = _objects[indexPath.row];
-//    NSMutableString *title = [NSMutableString stringWithString:@"#"];
-//    [title appendString:(NSString *)object];
-//    cell.textLabel.text = title;
-    cell.textLabel.text = (NSString *)object;
+    NSMutableString *title = [NSMutableString stringWithString:@"#"];
+    [title appendString:(NSString *)object];
+    cell.textLabel.text = title;
+//    cell.textLabel.text = (NSString *)object;
     if([[_dictObjects valueForKey:(NSString*) object] boolValue]) {
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
     } else {
@@ -88,14 +88,15 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    NSDate *object = _objects[indexPath.row];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     if (cell.accessoryType == UITableViewCellAccessoryNone) {
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
-        [_dictObjects setValue:[NSNumber numberWithBool:YES] forKey:cell.textLabel.text];
+        [_dictObjects setValue:[NSNumber numberWithBool:YES] forKey:(NSString *)object];
     }
     else {
         cell.accessoryType = UITableViewCellAccessoryNone;
-        [_dictObjects setValue:[NSNumber numberWithBool:NO] forKey:cell.textLabel.text];
+        [_dictObjects setValue:[NSNumber numberWithBool:NO] forKey:(NSString *)object];
 
     }
     
