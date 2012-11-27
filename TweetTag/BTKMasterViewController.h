@@ -10,4 +10,8 @@
 
 @interface BTKMasterViewController : UITableViewController
 
+@property int sortType;
+@property int defaultNumTweets;
+@property int currentNumTweets;
+
 @end

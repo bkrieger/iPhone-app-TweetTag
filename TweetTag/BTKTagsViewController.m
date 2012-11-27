@@ -20,15 +20,16 @@
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     _dictObjects = [NSMutableDictionary dictionaryWithDictionary:[defaults dictionaryForKey:@"tags"]];
     _objects = [NSMutableArray arrayWithArray:[_dictObjects allKeys]];
+    [_objects sortUsingSelector:@selector(compare:)];
     [self.tableView reloadData];
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(done)];
+    UIBarButtonItem *leftButton = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(done)];
     
-    self.navBarItem.rightBarButtonItem = rightButton;
+    self.navBarItem.leftBarButtonItem = leftButton;
         
 }
 
