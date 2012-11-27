@@ -112,7 +112,6 @@
         url = [NSString stringWithFormat:@"http://search.twitter.com/search.json%@", self.nextPage];
     }
     
-    NSLog(@"%@", url);
     
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
     NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
