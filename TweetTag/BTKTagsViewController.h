@@ -10,6 +10,10 @@
 
 @interface BTKTagsViewController : UITableViewController
 @property (weak, nonatomic) IBOutlet UINavigationItem *navBarItem;
-
+@property BOOL isAdding;
+@property UIBarButtonItem *doneButton;
+@property UIBarButtonItem *addButton;
+@property UIBarButtonItem *cancelButton;
+@property UIBarButtonItem *saveButton;
 
 @end
