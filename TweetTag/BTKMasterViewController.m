@@ -39,6 +39,7 @@
     //sorting
     UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithTitle:@"Sort: Recent" style:UIBarButtonItemStylePlain target:self action:@selector(sortButtonClicked)];
     self.sortType = 1;
+    self.noMore = true;
     self.navigationItem.rightBarButtonItem = rightButton;
 }
 
@@ -139,8 +140,11 @@
     //If there are tweets, display one extra cell for "Loading More..."
     if(_objects.count ==0) {
         return 0;
-    } else {
+    } else if(!self.noMore) {
         return _objects.count + 1;
+    } else {
+        //if there are no more tweets to be loaded, only display what we have
+        return _objects.count;
     }
 
 }
@@ -180,6 +184,7 @@
             assert(userVisibleDateFormatter != nil);
             
             [userVisibleDateFormatter setTimeStyle:NSDateFormatterShortStyle];
+            [userVisibleDateFormatter setDateStyle:NSDateFormatterShortStyle];
             
             userVisibleDateTimeString = [userVisibleDateFormatter stringFromDate:date];
         }
@@ -268,6 +273,14 @@
     
     [_objects addObjectsFromArray:[results objectForKey:@"results"]];
     self.nextPage = [results objectForKey:@"next_page"];
+    
+    //if no more to load
+    if(self.nextPage) {
+        self.noMore = false;
+    } else {
+        self.noMore = true;
+    }
+    
     self.loading = NO;
       
     [self.tableView reloadData];

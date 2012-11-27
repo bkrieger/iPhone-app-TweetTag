@@ -37,7 +37,7 @@
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="left" text="User" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oRn-jc-HjJ">
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="180" id="o0t-5E-1MF"/>
+                                                <constraint firstAttribute="width" constant="161" id="jep-Zc-TCx"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -52,11 +52,11 @@
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="2" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8h4-ry-hIN">
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="2" contentMode="left" text="Time" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8h4-ry-hIN">
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="88" id="D93-je-Hs0"/>
+                                                <constraint firstAttribute="width" constant="111" id="Xhf-v8-5Uc"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
@@ -68,9 +68,10 @@
                                     <constraint firstItem="7lK-PB-eac" firstAttribute="centerX" secondItem="lJ0-d7-vTF" secondAttribute="centerX" type="default" id="8cp-WM-f4K"/>
                                     <constraint firstItem="oRn-jc-HjJ" firstAttribute="leading" secondItem="lJ0-d7-vTF" secondAttribute="leading" constant="20" type="default" id="Nzd-hn-Iv1"/>
                                     <constraint firstItem="7lK-PB-eac" firstAttribute="top" secondItem="lJ0-d7-vTF" secondAttribute="top" constant="30" id="Rxu-cp-6LB"/>
+                                    <constraint firstItem="7lK-PB-eac" firstAttribute="trailing" secondItem="8h4-ry-hIN" secondAttribute="trailing" type="default" id="dZj-XA-yOO"/>
                                     <constraint firstItem="oRn-jc-HjJ" firstAttribute="top" secondItem="lJ0-d7-vTF" secondAttribute="top" constant="3" id="f1D-tC-smc"/>
-                                    <constraint firstItem="8h4-ry-hIN" firstAttribute="baseline" secondItem="oRn-jc-HjJ" secondAttribute="baseline" type="default" id="rZa-ep-JMY"/>
-                                    <constraint firstItem="8h4-ry-hIN" firstAttribute="trailing" secondItem="7lK-PB-eac" secondAttribute="trailing" type="default" id="sLH-CS-4jt"/>
+                                    <constraint firstItem="8h4-ry-hIN" firstAttribute="top" secondItem="oRn-jc-HjJ" secondAttribute="top" type="default" id="hFP-ch-wRw"/>
+                                    <constraint firstItem="8h4-ry-hIN" firstAttribute="bottom" secondItem="oRn-jc-HjJ" secondAttribute="bottom" type="default" id="iOq-7A-l4u"/>
                                 </constraints>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationLevel="7" indentationWidth="10" reuseIdentifier="More" textLabel="hHb-k2-enx" rowHeight="30" style="IBUITableViewCellStyleDefault" id="XPQ-Qb-uhU">
@@ -175,7 +176,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rFI-Rm-vw7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="465" y="747"/>
+            <point key="canvasLocation" x="1351" y="76"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ooj-Lc-g9G">
@@ -192,64 +193,8 @@
             </objects>
             <point key="canvasLocation" x="899" y="76"/>
         </scene>
-        <!--Add Tag View Controller-->
-        <scene sceneID="AXR-pL-vtR">
-            <objects>
-                <viewController id="eTl-TV-ntX" customClass="BTKAddTagViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="lyZ-qB-cza">
-                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ikn-hz-2Zm">
-                                <items>
-                                    <navigationItem title="Add Tag" id="xgg-D2-M6e"/>
-                                </items>
-                            </navigationBar>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="#" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YcN-1M-sAy">
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="33" id="Cwd-5c-uYA"/>
-                                    <constraint firstAttribute="width" constant="22" id="qgP-eV-SpU"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="39"/>
-                                <color key="textColor" red="0.063715516857702714" green="0.31640136684442155" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="hashtag" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QjE-NG-UZL">
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                        </subviews>
-                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="YcN-1M-sAy" firstAttribute="top" secondItem="lyZ-qB-cza" secondAttribute="top" constant="70" id="CEh-50-fnb"/>
-                            <constraint firstItem="YcN-1M-sAy" firstAttribute="top" secondItem="QjE-NG-UZL" secondAttribute="top" type="default" id="Gnp-Rl-9YE"/>
-                            <constraint firstItem="Ikn-hz-2Zm" firstAttribute="leading" secondItem="lyZ-qB-cza" secondAttribute="leading" type="default" id="aAj-yD-hVo"/>
-                            <constraint firstItem="Ikn-hz-2Zm" firstAttribute="trailing" secondItem="lyZ-qB-cza" secondAttribute="trailing" type="default" id="aHf-qY-Aju"/>
-                            <constraint firstItem="YcN-1M-sAy" firstAttribute="leading" secondItem="lyZ-qB-cza" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="izM-h8-jtB"/>
-                            <constraint firstItem="QjE-NG-UZL" firstAttribute="leading" secondItem="YcN-1M-sAy" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="pD7-wh-sD5"/>
-                            <constraint firstItem="Ikn-hz-2Zm" firstAttribute="top" secondItem="lyZ-qB-cza" secondAttribute="top" type="default" id="rDF-mG-Rby"/>
-                            <constraint firstAttribute="trailing" secondItem="QjE-NG-UZL" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="sKg-Cw-K5O"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" id="yMS-hQ-s9W"/>
-                    <connections>
-                        <outlet property="navBarItem" destination="xgg-D2-M6e" id="QGK-e3-RfI"/>
-                        <outlet property="tagField" destination="QjE-NG-UZL" id="PoJ-0t-9vV"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="jBm-wy-2Fj" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="889" y="747"/>
-        </scene>
     </scenes>
     <classes>
-        <class className="BTKAddTagViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/BTKAddTagViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="navBarItem" candidateClass="UINavigationItem"/>
-                <relationship kind="outlet" name="tagField" candidateClass="UITextField"/>
-            </relationships>
-        </class>
         <class className="BTKMasterViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/BTKMasterViewController.h"/>
         </class>

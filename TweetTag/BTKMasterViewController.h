@@ -14,6 +14,7 @@
 @property int defaultNumTweets;
 @property int currentNumTweets;
 @property BOOL loading;
+@property BOOL noMore;
 @property NSString *nextPage;
 
 @end
