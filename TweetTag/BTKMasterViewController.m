@@ -24,7 +24,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    UIRefreshControl *refreshControl = [[UIRefreshControl alloc]
+                                        init];
+    refreshControl.tintColor = [UIColor redColor];
+    [refreshControl addTarget:self action:@selector(refresh) forControlEvents:UIControlEventValueChanged];
+    self.refreshControl = refreshControl;
 }
 
 -(void)viewWillAppear:(BOOL)animated {
@@ -92,6 +96,10 @@
     }
 }
 
+- (void) refresh {
+    [self.tableView reloadData];
+    [self.refreshControl endRefreshing];
+}
 
 
 @end
