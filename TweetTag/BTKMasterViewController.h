@@ -13,5 +13,7 @@
 @property int sortType;
 @property int defaultNumTweets;
 @property int currentNumTweets;
+@property BOOL loading;
+@property NSString *nextPage;
 
 @end

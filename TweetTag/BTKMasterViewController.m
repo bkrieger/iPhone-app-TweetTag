@@ -11,7 +11,7 @@
 
 @interface BTKMasterViewController () {
     NSMutableData *_data; //for holding tweets temporarily while getting them
-    NSArray *_objects;
+    NSMutableArray *_objects;
     NSMutableSet *_tags;
 }
 @end
@@ -43,6 +43,7 @@
 }
 
 -(void)viewWillAppear:(BOOL)animated {
+    self.loading = YES;
     [self getCurrentHashtags];
 }
 
@@ -62,44 +63,56 @@
     //if tags have changed
     if(_tags == nil || ![newTags isEqualToSet:_tags]) {
         _tags = newTags;
+        _objects = [NSMutableArray new];
         self.currentNumTweets = self.defaultNumTweets;
-        [self getTweets:self.currentNumTweets];
+        [self getTweets:NO];
         //Go to top of table
         [self.tableView setContentOffset:CGPointZero animated:NO];
     }
 }
 
--(void)getTweets:(int)numTweets {
+//If useNextPage is false, getTweets will create a query
+//Otherwise, it will use the nextPage property as the query
+-(void)getTweets: (BOOL)useNextPage {
     //Connect to Twitter
     
-    NSString *result_type;
+    NSString *url;
     
-    switch(self.sortType) {
-        case 0:
-            result_type = @"popular";
-            break;
-        case 1:
-            result_type = @"recent";
-            break;
-        case 2:
-            result_type = @"mixed";
-            break;
-        //default should never occur, but just in case
-        default:
-            result_type = @"popular";
-            break;
+    if(!useNextPage) {
+        NSString *result_type;
+        
+        switch(self.sortType) {
+            case 0:
+                result_type = @"popular";
+                break;
+            case 1:
+                result_type = @"recent";
+                break;
+            case 2:
+                result_type = @"mixed";
+                break;
+                //default should never occur, but just in case
+            default:
+                result_type = @"popular";
+                break;
+        }
+        
+        
+        //Query is all tags joined together by " OR #", so we have tags OR'd together and they all get the necessary #
+        NSString *query = [[_tags allObjects] componentsJoinedByString:@"%20OR%20%23"];
+        
+        
+        
+        
+        //URL format is search.twitter.com/search.json?q=%23"tag"&rpp="numTweetsPerTag"&lang=en&result_type="result_type"
+        url = [NSString stringWithFormat:@"http://search.twitter.com/search.json?q=%%23%@&rpp=%d&lang=en&result_type=%@",
+                         query, self.currentNumTweets, result_type];
+
+    } else {
+        url = [NSString stringWithFormat:@"http://search.twitter.com/search.json%@", self.nextPage];
     }
     
-    
-    //Query is all tags joined together by " OR #", so we have tags OR'd together and they all get the necessary #
-    NSString *query = [[_tags allObjects] componentsJoinedByString:@"%20OR%20%23"];
-    
-    
-
-    
-    //URL format is search.twitter.com/search.json?q=%23"tag"&rpp="numTweetsPerTag"&lang=en&result_type="result_type"
-    NSString *url = [NSString stringWithFormat:@"http://search.twitter.com/search.json?q=%%23%@&rpp=%d&lang=en&result_type=%@",
-                     query, numTweets, result_type];
+    NSLog(@"%@", url);
     
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
     NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
@@ -123,53 +136,74 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return _objects.count;
+    //If no tweets, display nothing
+    //If there are tweets, display one extra cell for "Loading More..."
+    if(_objects.count ==0) {
+        return 0;
+    } else {
+        return _objects.count + 1;
+    }
+
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-
-    NSDictionary *object = _objects[indexPath.row];
-    
-    UILabel *label;
+    //If we are looking at a tweet
+    if(indexPath.row < _objects.count) {
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
         
-    //User
-    label = (UILabel*)[cell viewWithTag:1];
-    label.text = [object objectForKey:@"from_user"];
-    
-    //Date
-    label = (UILabel*)[cell viewWithTag:2];
-    NSString *timestamp = [object objectForKey:@"created_at"];
-    //Fix time for time zone
-    NSDateFormatter *rfc3339DateFormatter = [[NSDateFormatter alloc] init];
-    NSLocale *enUSPOSIXLocale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"];
+        NSDictionary *object = _objects[indexPath.row];
         
-    [rfc3339DateFormatter setLocale:enUSPOSIXLocale];
-    [rfc3339DateFormatter setDateFormat:@"EEE', 'dd' 'MMM' 'yyyy' 'HH':'mm':'ss' +0000'"];
-    [rfc3339DateFormatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
-    
-    // Convert the RFC 3339 date time string to an NSDate.
-    NSDate *date = [rfc3339DateFormatter dateFromString:timestamp];
-    
-    NSString *userVisibleDateTimeString;
-    if (date != nil) {
-        // Convert the date object to a user-visible date string.
-        NSDateFormatter *userVisibleDateFormatter = [[NSDateFormatter alloc] init];
-        assert(userVisibleDateFormatter != nil);
+        UILabel *label;
         
-        [userVisibleDateFormatter setTimeStyle:NSDateFormatterShortStyle];
+        //User
+        label = (UILabel*)[cell viewWithTag:1];
+        label.text = [object objectForKey:@"from_user"];
         
-        userVisibleDateTimeString = [userVisibleDateFormatter stringFromDate:date];
+        //Date
+        label = (UILabel*)[cell viewWithTag:2];
+        NSString *timestamp = [object objectForKey:@"created_at"];
+        //Fix time for time zone
+        NSDateFormatter *rfc3339DateFormatter = [[NSDateFormatter alloc] init];
+        NSLocale *enUSPOSIXLocale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"];
+        
+        [rfc3339DateFormatter setLocale:enUSPOSIXLocale];
+        [rfc3339DateFormatter setDateFormat:@"EEE', 'dd' 'MMM' 'yyyy' 'HH':'mm':'ss' +0000'"];
+        [rfc3339DateFormatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
+        
+        // Convert the RFC 3339 date time string to an NSDate.
+        NSDate *date = [rfc3339DateFormatter dateFromString:timestamp];
+        
+        NSString *userVisibleDateTimeString;
+        if (date != nil) {
+            // Convert the date object to a user-visible date string.
+            NSDateFormatter *userVisibleDateFormatter = [[NSDateFormatter alloc] init];
+            assert(userVisibleDateFormatter != nil);
+            
+            [userVisibleDateFormatter setTimeStyle:NSDateFormatterShortStyle];
+            
+            userVisibleDateTimeString = [userVisibleDateFormatter stringFromDate:date];
+        }
+        
+        label.text = userVisibleDateTimeString;
+        
+        //Text
+        label = (UILabel*)[cell viewWithTag:3];
+        label.text = [object objectForKey:@"text"];
+        return cell;
+    } else {
+        //We need to load more
+        if(!self.loading) {
+            self.loading = YES;
+            [self loadMore];
+        }
+        
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"More" forIndexPath:indexPath];
+        return cell;
     }
-        
-    label.text = userVisibleDateTimeString;
-        
-    //Text
-    label = (UILabel*)[cell viewWithTag:3];
-    label.text = [object objectForKey:@"text"];
 
-    return cell;
+
+
 }
 
 
@@ -205,8 +239,14 @@
 
 - (void) refresh {
     self.currentNumTweets = self.defaultNumTweets;
-    [self getTweets:self.currentNumTweets];
+    _objects = [NSMutableArray new];
+    self.loading = YES;
+    [self getTweets:NO];
     [self.refreshControl endRefreshing];
+}
+
+- (void) loadMore {
+    [self getTweets:YES];
 }
 
 #pragma mark - NSURLConnectionDataDelegate methods
@@ -227,7 +267,9 @@
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
     NSDictionary *results = [NSJSONSerialization JSONObjectWithData:_data options:0 error:nil];
     
-    _objects = [results objectForKey:@"results"];
+    [_objects addObjectsFromArray:[results objectForKey:@"results"]];
+    self.nextPage = [results objectForKey:@"next_page"];
+    self.loading = NO;
       
     [self.tableView reloadData];
 }

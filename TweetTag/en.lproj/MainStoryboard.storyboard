@@ -73,6 +73,22 @@
                                     <constraint firstItem="7lK-PB-eac" firstAttribute="top" secondItem="lJ0-d7-vTF" secondAttribute="top" constant="27" id="uVr-hK-Akm"/>
                                 </constraints>
                             </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationLevel="7" indentationWidth="10" reuseIdentifier="More" textLabel="hHb-k2-enx" rowHeight="30" style="IBUITableViewCellStyleDefault" id="XPQ-Qb-uhU">
+                                <rect key="frame" x="0.0" y="127" width="320" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="29"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Loading More..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hHb-k2-enx">
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                            </tableViewCell>
                         </prototypes>
                         <sections/>
                         <connections>
