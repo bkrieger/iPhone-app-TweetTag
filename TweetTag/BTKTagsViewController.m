@@ -192,9 +192,10 @@
     UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
     UITextField *field = (UITextField *) [cell viewWithTag:1];
     NSString *tag = field.text;
-    field.text = @"";
+    
         
     if([self isValidHashtag:tag]) {
+        field.text = @"";
         [_objects removeObjectAtIndex:0];
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         
