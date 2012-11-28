@@ -103,7 +103,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    if(!self.isAdding) {
+    //if(!self.isAdding) {
         UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
         NSDate *object = _objects[indexPath.row];
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
@@ -122,9 +122,9 @@
         
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
         [self.tableView reloadData];
-    } else {
-        [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    }
+   // } else {
+   //     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+   // }
 }
 
 - (void)insertNewObject:(id)sender
