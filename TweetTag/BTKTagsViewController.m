@@ -27,6 +27,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [self.navigationController.navigationBar setTintColor:[UIColor colorWithRed:.318 green:.428 blue:.478 alpha:1]];
+
+    
     self.doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(done)];
     
     self.addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addTag)];
@@ -58,29 +62,41 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    UITableViewCell *cell;
     if(indexPath.row > 0 || !self.isAdding) {
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+        cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
         
         NSDate *object = _objects[indexPath.row];
-        NSMutableString *title = [NSMutableString stringWithString:@"#"];
-        [title appendString:(NSString *)object];
-        cell.textLabel.text = title;
+        UILabel *label = (UILabel*)[cell viewWithTag:1];
+        label.text = (NSString *)object;
         if([[_dictObjects valueForKey:(NSString*) object] boolValue]) {
             cell.accessoryType = UITableViewCellAccessoryCheckmark;
         } else {
             cell.accessoryType = UITableViewCellAccessoryNone;
         }
-        return cell;
     } else {
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"New" forIndexPath:indexPath];
-        return cell;
+        cell = [tableView dequeueReusableCellWithIdentifier:@"New" forIndexPath:indexPath];
     }
+    
+    UIImageView *imageView = (UIImageView *)[cell viewWithTag:2];
+    UIView *v = [[UIView alloc] initWithFrame:cell.frame];
+    if(indexPath.row%2 == 0) {
+        imageView.image = [UIImage imageNamed:@"blue_tag.png"];
+        v.backgroundColor = [UIColor colorWithRed:.839 green:.949 blue:1 alpha:.5];
+    } else {
+        imageView.image = [UIImage imageNamed:@"white_tag.png"];
+        v.backgroundColor = [UIColor colorWithWhite:1 alpha:1];
+    }
+    
+    cell.backgroundView = v;
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
+    return cell;
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // Return NO if you do not want the specified item to be editable.
-    //return YES;
     return !self.isAdding;
 }
 
@@ -103,7 +119,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    //if(!self.isAdding) {
+    if(!self.isAdding || indexPath.row != 0) {
         UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
         NSDate *object = _objects[indexPath.row];
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
@@ -121,10 +137,9 @@
         [[NSUserDefaults standardUserDefaults] synchronize];
         
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
-        [self.tableView reloadData];
-   // } else {
-   //     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-   // }
+    } else {
+        [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    }
 }
 
 - (void)insertNewObject:(id)sender
@@ -150,6 +165,7 @@
         [_objects insertObject:[NSDate date] atIndex:0];
         NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
         [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+        [self.tableView reloadData];
     }
 }
 

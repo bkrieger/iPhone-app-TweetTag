@@ -27,13 +27,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self.navigationController.navigationBar setTintColor:[UIColor colorWithRed:.318 green:.428 blue:.478 alpha:1]];
     
     self.defaultNumTweets = 25;
     self.currentNumTweets = self.defaultNumTweets;
     
     //pull to refresh
     UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
-    refreshControl.tintColor = [UIColor colorWithRed:.251 green:.6 blue:1 alpha:1];
+    refreshControl.tintColor = [UIColor colorWithRed:.839 green:.949 blue:1 alpha:1];;
     [refreshControl addTarget:self action:@selector(refresh) forControlEvents:UIControlEventValueChanged];
     self.refreshControl = refreshControl;
     
@@ -174,7 +175,6 @@
         label = (UILabel*)[cell viewWithTag:1];
         NSString *username = [NSString stringWithFormat:@"%@%@",@"@",[object objectForKey:@"from_user"]];
         label.text = username;
-        NSLog(@"%@ ",username);
         
         //Date
         label = (UILabel*)[cell viewWithTag:2];
@@ -191,7 +191,6 @@
         NSDate *date = [rfc3339DateFormatter dateFromString:timestamp];
         
         int time = -1 * (int)[date timeIntervalSinceNow];
-        NSLog(@"%d",time);
         if(time>172800) {
             label.text = [NSString stringWithFormat:@"about %d days ago",time/86400];
         } else if(time>86400) {
