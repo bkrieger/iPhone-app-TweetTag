@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C533F122166A913600E3015B /* placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = C533F121166A913600E3015B /* placeholder.png */; };
 		C5A0001A1669A0D000409B61 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5A000191669A0D000409B61 /* ImageIO.framework */; };
-		C5A0001C1669A1AA00409B61 /* placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = C5A0001B1669A1AA00409B61 /* placeholder.png */; };
 		C5A000201669ADFE00409B61 /* white_tag.png in Resources */ = {isa = PBXBuildFile; fileRef = C5A0001E1669ADFE00409B61 /* white_tag.png */; };
 		C5A000261669B3FC00409B61 /* blue_tag.png in Resources */ = {isa = PBXBuildFile; fileRef = C5A000251669B3FC00409B61 /* blue_tag.png */; };
 		C5A000281669B54D00409B61 /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C5A000271669B54D00409B61 /* icon@2x.png */; };
@@ -28,8 +28,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C533F121166A913600E3015B /* placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = placeholder.png; sourceTree = "<group>"; };
 		C5A000191669A0D000409B61 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
-		C5A0001B1669A1AA00409B61 /* placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = placeholder.png; sourceTree = "<group>"; };
 		C5A0001E1669ADFE00409B61 /* white_tag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = white_tag.png; sourceTree = "<group>"; };
 		C5A000251669B3FC00409B61 /* blue_tag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blue_tag.png; sourceTree = "<group>"; };
 		C5A000271669B54D00409B61 /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.png"; sourceTree = "<group>"; };
@@ -117,10 +117,10 @@
 		C5A154201662B52C00871F13 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				C533F121166A913600E3015B /* placeholder.png */,
 				C5A0001E1669ADFE00409B61 /* white_tag.png */,
 				C5A000271669B54D00409B61 /* icon@2x.png */,
 				C5A000251669B3FC00409B61 /* blue_tag.png */,
-				C5A0001B1669A1AA00409B61 /* placeholder.png */,
 				C5A154211662B52C00871F13 /* TweetTag-Info.plist */,
 				C5A154221662B52C00871F13 /* InfoPlist.strings */,
 				C5A154251662B52C00871F13 /* main.m */,
@@ -189,10 +189,10 @@
 				C5A1542E1662B52C00871F13 /* Default@2x.png in Resources */,
 				C5A154301662B52C00871F13 /* Default-568h@2x.png in Resources */,
 				C5A154331662B52C00871F13 /* MainStoryboard.storyboard in Resources */,
-				C5A0001C1669A1AA00409B61 /* placeholder.png in Resources */,
 				C5A000201669ADFE00409B61 /* white_tag.png in Resources */,
 				C5A000261669B3FC00409B61 /* blue_tag.png in Resources */,
 				C5A000281669B54D00409B61 /* icon@2x.png in Resources */,
+				C533F122166A913600E3015B /* placeholder.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

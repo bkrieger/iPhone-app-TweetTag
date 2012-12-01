@@ -212,10 +212,11 @@
         NSString *text = [object objectForKey:@"text"];
         tv.text = text;
 
-        
         //Image
         UIImageView *image = (UIImageView*)[cell viewWithTag:4];
-        [image setImageWithURL:[NSURL URLWithString:[object objectForKey:@"profile_image_url"]] placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
+        NSString *url = [object objectForKey:@"profile_image_url"];
+        url = [url stringByReplacingOccurrencesOfString:@"_normal." withString:@"_bigger."];
+        [image setImageWithURL:[NSURL URLWithString:url] placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
         
         if(indexPath.row%2 == 0) {
             cell.contentView.backgroundColor = [UIColor colorWithRed:.839 green:.949 blue:1 alpha:.5];
