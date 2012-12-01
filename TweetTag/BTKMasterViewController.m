@@ -208,8 +208,10 @@
         }
         
         //Text
-        UITextView *textView = (UITextView*)[cell viewWithTag:5];
-        textView.text = [object objectForKey:@"text"];
+        UITextView *tv = (UITextView*)[cell viewWithTag:5];
+        NSString *text = [object objectForKey:@"text"];
+        tv.text = text;
+
         
         //Image
         UIImageView *image = (UIImageView*)[cell viewWithTag:4];
@@ -221,7 +223,7 @@
         } else {
             cell.contentView.backgroundColor = [UIColor colorWithWhite:1 alpha:1];
         }
-        
+                
         return cell;
     } else if(_objects.count == indexPath.row) {
         //We need to load more
