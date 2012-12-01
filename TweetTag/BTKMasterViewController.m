@@ -8,6 +8,8 @@
 
 #import "BTKMasterViewController.h"
 #import <SDWebImage/UIImageView+WebCache.h>
+#import <QuartzCore/QuartzCore.h>
+
 
 
 @interface BTKMasterViewController () {
@@ -158,6 +160,18 @@
 
 }
 
+- (void)goToTwitterApp:(id)sender {
+    UIButton *button = (UIButton*)sender;
+    NSString *title = [button currentTitle];
+    
+    if([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"twitter://"]]) {
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"twitter://user?screen_name=%@",title]]];
+    } else {
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://www.twitter.com/%@",title]]];
+    }
+
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (_objects.count == 0 && indexPath.row==0 && _tags.count == 0) {
@@ -176,9 +190,9 @@
         UILabel *label;
         
         //User
-        label = (UILabel*)[cell viewWithTag:1];
-        NSString *username = [NSString stringWithFormat:@"%@%@",@"@",[object objectForKey:@"from_user"]];
-        label.text = username;
+        UIButton *button = (UIButton*)[cell viewWithTag:7];
+        [button setTitle:[NSString stringWithFormat:@"%@%@",@"@",[object objectForKey:@"from_user"]] forState:UIControlStateNormal];
+        //[button addTarget:self action:@selector(goToTwitterApp:) forControlEvents:UIControlEventTouchUpInside];
         
         //Date
         label = (UILabel*)[cell viewWithTag:2];
@@ -200,7 +214,7 @@
         } else if(time>86400) {
             label.text = @"about 1 day ago";
         } else if(time>7200) {
-            label.text = [NSString stringWithFormat:@"%d hours ago",time/3600];
+            label.text = [NSString stringWithFormat:@"about %d hours ago",time/3600];
         } else if(time>3600) {
             label.text = @"about 1 hour ago";
         } else if(time>120) {
@@ -217,10 +231,18 @@
         tv.text = text;
 
         //Image
+        UIButton *uib = (UIButton*)[cell viewWithTag:9];
+        
         UIImageView *image = (UIImageView*)[cell viewWithTag:4];
+        [image.layer setMasksToBounds:YES];
+        [image.layer setCornerRadius:10];
         NSString *url = [object objectForKey:@"profile_image_url"];
         url = [url stringByReplacingOccurrencesOfString:@"_normal." withString:@"_bigger."];
         [image setImageWithURL:[NSURL URLWithString:url] placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
+        [uib setTitle:[object objectForKey:@"from_user"] forState:UIControlStateNormal];
+        [uib addTarget:self action:@selector(goToTwitterApp:) forControlEvents:UIControlEventTouchUpInside];
+        [uib.layer setMasksToBounds:YES];
+        [uib.layer setCornerRadius:10];
         
         if(indexPath.row%2 == 0) {
             cell.contentView.backgroundColor = [UIColor colorWithRed:.839 green:.949 blue:1 alpha:.5];
