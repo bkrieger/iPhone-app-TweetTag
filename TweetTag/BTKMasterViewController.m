@@ -41,11 +41,12 @@
     //sorting
     UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithTitle:@"Sort: Recent" style:UIBarButtonItemStylePlain target:self action:@selector(sortButtonClicked)];
     self.sortType = 1;
-    self.noMore = true;
+    self.noMore = YES;
     self.navigationItem.rightBarButtonItem = rightButton;
 }
 
 -(void)viewWillAppear:(BOOL)animated {
+    self.noTweets = NO;
     self.loading = YES;
     [self getCurrentHashtags];
     [self.tableView reloadData];
@@ -159,9 +160,12 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    //If we are looking at a tweet
     if (_objects.count == 0 && indexPath.row==0 && _tags.count == 0) {
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"None" forIndexPath:indexPath];
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"NoTags" forIndexPath:indexPath];
+        return cell;
+
+    } else if (_objects.count == 0 && indexPath.row == 0 && self.noTweets) {
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"NoTweets" forIndexPath:indexPath];
         return cell;
 
     } else if(indexPath.row < _objects.count) {
@@ -312,12 +316,17 @@
     
     //if no more to load
     if(self.nextPage) {
-        self.noMore = false;
+        self.noMore = NO;
     } else {
-        self.noMore = true;
+        self.noMore = YES;
     }
     
     self.loading = NO;
+    if(_objects.count==0) {
+        self.noTweets = YES;
+    } else {
+        self.noTweets = NO;
+    }
       
     [self.tableView reloadData];
 }
