@@ -102,7 +102,6 @@
 		C5A1541F1662B52C00871F13 /* TweetTag */ = {
 			isa = PBXGroup;
 			children = (
-				C58CE73B1665B9E400E81EC0 /* icon@2x.png */,
 				C5A154281662B52C00871F13 /* BTKAppDelegate.h */,
 				C5A154291662B52C00871F13 /* BTKAppDelegate.m */,
 				C5A154311662B52C00871F13 /* MainStoryboard.storyboard */,
@@ -119,6 +118,7 @@
 			isa = PBXGroup;
 			children = (
 				C5A0001E1669ADFE00409B61 /* white_tag.png */,
+				C58CE73B1665B9E400E81EC0 /* icon@2x.png */,
 				C5A000251669B3FC00409B61 /* blue_tag.png */,
 				C5A0001B1669A1AA00409B61 /* placeholder.png */,
 				C5A154211662B52C00871F13 /* TweetTag-Info.plist */,
