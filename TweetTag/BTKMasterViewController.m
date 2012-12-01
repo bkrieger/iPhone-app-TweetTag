@@ -210,8 +210,6 @@
         //Text
         UITextView *textView = (UITextView*)[cell viewWithTag:5];
         textView.text = [object objectForKey:@"text"];
-//        label = (UILabel*)[cell viewWithTag:3];
-//        label.text = [object objectForKey:@"text"];
         
         //Image
         UIImageView *image = (UIImageView*)[cell viewWithTag:4];
