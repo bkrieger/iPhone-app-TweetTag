@@ -7,6 +7,7 @@
 //
 
 #import "BTKMasterViewController.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
 
 @interface BTKMasterViewController () {
@@ -32,7 +33,7 @@
     
     //pull to refresh
     UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
-    refreshControl.tintColor = [UIColor redColor];
+    refreshControl.tintColor = [UIColor colorWithRed:.251 green:.6 blue:1 alpha:1];
     [refreshControl addTarget:self action:@selector(refresh) forControlEvents:UIControlEventValueChanged];
     self.refreshControl = refreshControl;
     
@@ -46,6 +47,7 @@
 -(void)viewWillAppear:(BOOL)animated {
     self.loading = YES;
     [self getCurrentHashtags];
+    [self.tableView reloadData];
 }
 
 -(void)getCurrentHashtags {
@@ -76,6 +78,11 @@
 //Otherwise, it will use the nextPage property as the query
 -(void)getTweets: (BOOL)useNextPage {
     //Connect to Twitter
+    
+    if(_tags.count == 0) {
+        
+        return;
+    }
     
     NSString *url;
     
@@ -139,7 +146,7 @@
     //If no tweets, display nothing
     //If there are tweets, display one extra cell for "Loading More..."
     if(_objects.count ==0) {
-        return 0;
+        return 1;
     } else if(!self.noMore) {
         return _objects.count + 1;
     } else {
@@ -152,7 +159,11 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     //If we are looking at a tweet
-    if(indexPath.row < _objects.count) {
+    if (_objects.count == 0 && indexPath.row==0 && _tags.count == 0) {
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"None" forIndexPath:indexPath];
+        return cell;
+
+    } else if(indexPath.row < _objects.count) {
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
         
         NSDictionary *object = _objects[indexPath.row];
@@ -161,7 +172,9 @@
         
         //User
         label = (UILabel*)[cell viewWithTag:1];
-        label.text = [object objectForKey:@"from_user"];
+        NSString *username = [NSString stringWithFormat:@"%@%@",@"@",[object objectForKey:@"from_user"]];
+        label.text = username;
+        NSLog(@"%@ ",username);
         
         //Date
         label = (UILabel*)[cell viewWithTag:2];
@@ -177,25 +190,41 @@
         // Convert the RFC 3339 date time string to an NSDate.
         NSDate *date = [rfc3339DateFormatter dateFromString:timestamp];
         
-        NSString *userVisibleDateTimeString;
-        if (date != nil) {
-            // Convert the date object to a user-visible date string.
-            NSDateFormatter *userVisibleDateFormatter = [[NSDateFormatter alloc] init];
-            assert(userVisibleDateFormatter != nil);
-            
-            [userVisibleDateFormatter setTimeStyle:NSDateFormatterShortStyle];
-            [userVisibleDateFormatter setDateStyle:NSDateFormatterShortStyle];
-            
-            userVisibleDateTimeString = [userVisibleDateFormatter stringFromDate:date];
+        int time = -1 * (int)[date timeIntervalSinceNow];
+        NSLog(@"%d",time);
+        if(time>172800) {
+            label.text = [NSString stringWithFormat:@"about %d days ago",time/86400];
+        } else if(time>86400) {
+            label.text = @"about 1 day ago";
+        } else if(time>7200) {
+            label.text = [NSString stringWithFormat:@"%d hours ago",time/3600];
+        } else if(time>3600) {
+            label.text = @"about 1 hour ago";
+        } else if(time>120) {
+            label.text = [NSString stringWithFormat:@"about %d minutes ago",time/60];
+        } else if(time>60) {
+            label.text = @"about 1 minute ago";
+        } else {
+            label.text = @"less than a minute ago";
         }
-        
-        label.text = userVisibleDateTimeString;
         
         //Text
         label = (UILabel*)[cell viewWithTag:3];
         label.text = [object objectForKey:@"text"];
+        
+        //Image
+        UIImageView *image = (UIImageView*)[cell viewWithTag:4];
+        [image setImageWithURL:[NSURL URLWithString:[object objectForKey:@"profile_image_url"]] placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
+        
+        if(indexPath.row%2 == 0) {
+            cell.contentView.backgroundColor = [UIColor colorWithRed:.839 green:.949 blue:1 alpha:.5];
+
+        } else {
+            cell.contentView.backgroundColor = [UIColor colorWithWhite:1 alpha:1];
+        }
+        
         return cell;
-    } else {
+    } else if(_objects.count == indexPath.row) {
         //We need to load more
         if(!self.loading) {
             self.loading = YES;
@@ -203,6 +232,9 @@
         }
         
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"More" forIndexPath:indexPath];
+        return cell;
+    } else {
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Blank" forIndexPath:indexPath];
         return cell;
     }
 
@@ -225,19 +257,21 @@
 - (void) sortButtonClicked {
     switch (self.sortType) {
         case 0:
-            self.sortType = 1;
-            self.navigationItem.rightBarButtonItem.title = @"Sort: Recent";
-            break;
-        case 1:
             self.sortType = 2;
             self.navigationItem.rightBarButtonItem.title = @"Sort: Mixed";
             break;
-        case 2:
+        case 1:
             self.sortType = 0;
             self.navigationItem.rightBarButtonItem.title = @"Sort: Popular";
             break;
+        case 2:
+            self.sortType = 1;
+            self.navigationItem.rightBarButtonItem.title = @"Sort: Recent";
+            break;
     }
-    
+
+    [self.tableView setContentOffset:CGPointZero animated:NO];
+
     [self refresh];
 }
 
