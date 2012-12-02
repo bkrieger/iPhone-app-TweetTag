@@ -10,6 +10,10 @@
 
 @implementation BTKAppDelegate
 
+-(BOOL)openURL:(NSURL *)url{
+    return YES;
+}
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.

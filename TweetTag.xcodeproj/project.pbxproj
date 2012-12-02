@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		C533F122166A913600E3015B /* placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = C533F121166A913600E3015B /* placeholder.png */; };
+		C55F6940166B30FE00809935 /* MyApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = C55F693F166B30FE00809935 /* MyApplication.m */; };
 		C585577F166AE85D00BE2470 /* BTKWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C585577E166AE85D00BE2470 /* BTKWebViewController.m */; };
 		C5855786166AF75700BE2470 /* right_triangle.png in Resources */ = {isa = PBXBuildFile; fileRef = C5855785166AF75700BE2470 /* right_triangle.png */; };
 		C5855788166AF75C00BE2470 /* left_triangle.png in Resources */ = {isa = PBXBuildFile; fileRef = C5855787166AF75C00BE2470 /* left_triangle.png */; };
@@ -32,6 +33,7 @@
 
 /* Begin PBXFileReference section */
 		C533F121166A913600E3015B /* placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = placeholder.png; sourceTree = "<group>"; };
+		C55F693F166B30FE00809935 /* MyApplication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyApplication.m; sourceTree = "<group>"; };
 		C585577D166AE85D00BE2470 /* BTKWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTKWebViewController.h; sourceTree = "<group>"; };
 		C585577E166AE85D00BE2470 /* BTKWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTKWebViewController.m; sourceTree = "<group>"; };
 		C5855785166AF75700BE2470 /* right_triangle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = right_triangle.png; sourceTree = "<group>"; };
@@ -115,6 +117,7 @@
 				C5A154341662B52C00871F13 /* BTKMasterViewController.h */,
 				C5A154351662B52C00871F13 /* BTKMasterViewController.m */,
 				C585577D166AE85D00BE2470 /* BTKWebViewController.h */,
+				C55F693F166B30FE00809935 /* MyApplication.m */,
 				C585577E166AE85D00BE2470 /* BTKWebViewController.m */,
 				C5BD4C0D1662BB13004F533C /* BTKTagsViewController.h */,
 				C5BD4C0E1662BB13004F533C /* BTKTagsViewController.m */,
@@ -221,6 +224,7 @@
 				C5A154361662B52C00871F13 /* BTKMasterViewController.m in Sources */,
 				C5BD4C0F1662BB13004F533C /* BTKTagsViewController.m in Sources */,
 				C585577F166AE85D00BE2470 /* BTKWebViewController.m in Sources */,
+				C55F6940166B30FE00809935 /* MyApplication.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
