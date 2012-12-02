@@ -8,10 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		C533F122166A913600E3015B /* placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = C533F121166A913600E3015B /* placeholder.png */; };
-		C55F6940166B30FE00809935 /* MyApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = C55F693F166B30FE00809935 /* MyApplication.m */; };
+		C55F6940166B30FE00809935 /* BTKApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = C55F693F166B30FE00809935 /* BTKApplication.m */; };
+		C55F694D166B3BC200809935 /* back.png in Resources */ = {isa = PBXBuildFile; fileRef = C55F694B166B3BC200809935 /* back.png */; };
+		C55F694E166B3BC200809935 /* back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C55F694C166B3BC200809935 /* back@2x.png */; };
+		C55F6951166B3BC800809935 /* forward.png in Resources */ = {isa = PBXBuildFile; fileRef = C55F694F166B3BC800809935 /* forward.png */; };
+		C55F6952166B3BC800809935 /* forward@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C55F6950166B3BC800809935 /* forward@2x.png */; };
 		C585577F166AE85D00BE2470 /* BTKWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C585577E166AE85D00BE2470 /* BTKWebViewController.m */; };
-		C5855786166AF75700BE2470 /* right_triangle.png in Resources */ = {isa = PBXBuildFile; fileRef = C5855785166AF75700BE2470 /* right_triangle.png */; };
-		C5855788166AF75C00BE2470 /* left_triangle.png in Resources */ = {isa = PBXBuildFile; fileRef = C5855787166AF75C00BE2470 /* left_triangle.png */; };
 		C5A0001A1669A0D000409B61 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5A000191669A0D000409B61 /* ImageIO.framework */; };
 		C5A000201669ADFE00409B61 /* white_tag.png in Resources */ = {isa = PBXBuildFile; fileRef = C5A0001E1669ADFE00409B61 /* white_tag.png */; };
 		C5A000261669B3FC00409B61 /* blue_tag.png in Resources */ = {isa = PBXBuildFile; fileRef = C5A000251669B3FC00409B61 /* blue_tag.png */; };
@@ -33,11 +35,14 @@
 
 /* Begin PBXFileReference section */
 		C533F121166A913600E3015B /* placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = placeholder.png; sourceTree = "<group>"; };
-		C55F693F166B30FE00809935 /* MyApplication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyApplication.m; sourceTree = "<group>"; };
+		C55F693F166B30FE00809935 /* BTKApplication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTKApplication.m; sourceTree = "<group>"; };
+		C55F694B166B3BC200809935 /* back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back.png; sourceTree = "<group>"; };
+		C55F694C166B3BC200809935 /* back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back@2x.png"; sourceTree = "<group>"; };
+		C55F694F166B3BC800809935 /* forward.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = forward.png; sourceTree = "<group>"; };
+		C55F6950166B3BC800809935 /* forward@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "forward@2x.png"; sourceTree = "<group>"; };
+		C55F6953166B465700809935 /* BTKApplication.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BTKApplication.h; sourceTree = "<group>"; };
 		C585577D166AE85D00BE2470 /* BTKWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTKWebViewController.h; sourceTree = "<group>"; };
 		C585577E166AE85D00BE2470 /* BTKWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTKWebViewController.m; sourceTree = "<group>"; };
-		C5855785166AF75700BE2470 /* right_triangle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = right_triangle.png; sourceTree = "<group>"; };
-		C5855787166AF75C00BE2470 /* left_triangle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = left_triangle.png; sourceTree = "<group>"; };
 		C5A000191669A0D000409B61 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		C5A0001E1669ADFE00409B61 /* white_tag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = white_tag.png; sourceTree = "<group>"; };
 		C5A000251669B3FC00409B61 /* blue_tag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blue_tag.png; sourceTree = "<group>"; };
@@ -116,8 +121,9 @@
 				C5A154311662B52C00871F13 /* MainStoryboard.storyboard */,
 				C5A154341662B52C00871F13 /* BTKMasterViewController.h */,
 				C5A154351662B52C00871F13 /* BTKMasterViewController.m */,
+				C55F6953166B465700809935 /* BTKApplication.h */,
+				C55F693F166B30FE00809935 /* BTKApplication.m */,
 				C585577D166AE85D00BE2470 /* BTKWebViewController.h */,
-				C55F693F166B30FE00809935 /* MyApplication.m */,
 				C585577E166AE85D00BE2470 /* BTKWebViewController.m */,
 				C5BD4C0D1662BB13004F533C /* BTKTagsViewController.h */,
 				C5BD4C0E1662BB13004F533C /* BTKTagsViewController.m */,
@@ -131,13 +137,15 @@
 			children = (
 				C533F121166A913600E3015B /* placeholder.png */,
 				C5A0001E1669ADFE00409B61 /* white_tag.png */,
+				C55F694B166B3BC200809935 /* back.png */,
+				C55F694C166B3BC200809935 /* back@2x.png */,
 				C5A000271669B54D00409B61 /* icon@2x.png */,
-				C5855785166AF75700BE2470 /* right_triangle.png */,
+				C55F694F166B3BC800809935 /* forward.png */,
+				C55F6950166B3BC800809935 /* forward@2x.png */,
 				C5A000251669B3FC00409B61 /* blue_tag.png */,
 				C5A154211662B52C00871F13 /* TweetTag-Info.plist */,
 				C5A154221662B52C00871F13 /* InfoPlist.strings */,
 				C5A154251662B52C00871F13 /* main.m */,
-				C5855787166AF75C00BE2470 /* left_triangle.png */,
 				C5A154271662B52C00871F13 /* TweetTag-Prefix.pch */,
 				C5A1542B1662B52C00871F13 /* Default.png */,
 				C5A1542D1662B52C00871F13 /* Default@2x.png */,
@@ -207,8 +215,10 @@
 				C5A000261669B3FC00409B61 /* blue_tag.png in Resources */,
 				C5A000281669B54D00409B61 /* icon@2x.png in Resources */,
 				C533F122166A913600E3015B /* placeholder.png in Resources */,
-				C5855786166AF75700BE2470 /* right_triangle.png in Resources */,
-				C5855788166AF75C00BE2470 /* left_triangle.png in Resources */,
+				C55F694D166B3BC200809935 /* back.png in Resources */,
+				C55F694E166B3BC200809935 /* back@2x.png in Resources */,
+				C55F6951166B3BC800809935 /* forward.png in Resources */,
+				C55F6952166B3BC800809935 /* forward@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -224,7 +234,7 @@
 				C5A154361662B52C00871F13 /* BTKMasterViewController.m in Sources */,
 				C5BD4C0F1662BB13004F533C /* BTKTagsViewController.m in Sources */,
 				C585577F166AE85D00BE2470 /* BTKWebViewController.m in Sources */,
-				C55F6940166B30FE00809935 /* MyApplication.m in Sources */,
+				C55F6940166B30FE00809935 /* BTKApplication.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

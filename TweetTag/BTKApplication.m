@@ -7,19 +7,20 @@
 //
 
 #import "BTKAppDelegate.h"
+#import "BTKApplication.h"
 
-@interface MyApplication : UIApplication {
-    
-}
 
-@end
+@implementation BTKApplication
 
-@implementation MyApplication
 
--(BOOL)openURL:(NSURL *)url{
-    if  ([self.delegate openURL:url])
+-(BOOL)openURL:(NSURL *)url {
+    if  ([((BTKAppDelegate*)self.delegate) openURL:url])
         return YES;
     else
         return [super openURL:url];
+}
+
+-(BOOL)openURLinSafari:(NSURL *)url {
+    return [super openURL:url];
 }
 @end

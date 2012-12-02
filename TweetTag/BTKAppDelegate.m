@@ -7,10 +7,14 @@
 //
 
 #import "BTKAppDelegate.h"
+#import "BTKWebViewController.h"
 
 @implementation BTKAppDelegate
 
 -(BOOL)openURL:(NSURL *)url{
+    UINavigationController *controller = (UINavigationController*)self.window.rootViewController;
+    BTKWebViewController *wc = [[BTKWebViewController alloc] initWithURL:url];
+    [controller pushViewController:wc animated:YES];
     return YES;
 }
 
