@@ -7,6 +7,7 @@
 //
 
 #import "BTKMasterViewController.h"
+#import "BTKWebViewController.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 #import <QuartzCore/QuartzCore.h>
 
@@ -160,17 +161,18 @@
 
 }
 
-- (void)goToTwitterApp:(id)sender {
-    UIButton *button = (UIButton*)sender;
-    NSString *title = [button currentTitle];
-    
-    if([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"twitter://"]]) {
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"twitter://user?screen_name=%@",title]]];
-    } else {
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://www.twitter.com/%@",title]]];
-    }
-
-}
+//- (void)goToTwitterApp:(id)sender {
+//    UIButton *button = (UIButton*)sender;
+//    NSString *title = [button currentTitle];
+//    
+//
+//    if([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"twitter://"]]) {
+//        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"twitter://user?screen_name=%@",title]]];
+//    } else {
+//        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://www.twitter.com/%@",title]]];
+//    }
+//
+//}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -240,7 +242,7 @@
         url = [url stringByReplacingOccurrencesOfString:@"_normal." withString:@"_bigger."];
         [image setImageWithURL:[NSURL URLWithString:url] placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
         [uib setTitle:[object objectForKey:@"from_user"] forState:UIControlStateNormal];
-        [uib addTarget:self action:@selector(goToTwitterApp:) forControlEvents:UIControlEventTouchUpInside];
+        //[uib addTarget:self action:@selector(goToTwitterApp:) forControlEvents:UIControlEventTouchUpInside];
         [uib.layer setMasksToBounds:YES];
         [uib.layer setCornerRadius:10];
         
@@ -313,6 +315,15 @@
 
 - (void) loadMore {
     [self getTweets:YES];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if([[segue identifier] isEqualToString:@"web"]) {
+        UIButton *button = (UIButton*)sender;
+        NSString *title = [button currentTitle];
+        BTKWebViewController *vc = [segue destinationViewController];
+        vc.url = [NSURL URLWithString:[NSString stringWithFormat:@"http://www.twitter.com/%@",title]];
+    }
 }
 
 #pragma mark - NSURLConnectionDataDelegate methods

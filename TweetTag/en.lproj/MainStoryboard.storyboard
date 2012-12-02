@@ -19,6 +19,55 @@
             </objects>
             <point key="canvasLocation" x="259" y="-302"/>
         </scene>
+        <!--Web View Controller-->
+        <scene sceneID="U4u-hg-bTg">
+            <objects>
+                <viewController id="rBQ-lS-gxX" customClass="BTKWebViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="xrl-9w-mG8">
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" scalesPageToFit="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WDR-dS-GGM">
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <outlet property="delegate" destination="rBQ-lS-gxX" id="HeW-nk-8C8"/>
+                                </connections>
+                            </webView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YE9-yr-FHl">
+                                <items>
+                                    <barButtonItem image="left_triangle.png" width="40" style="plain" id="UeI-eU-Yy1">
+                                        <connections>
+                                            <action selector="back:" destination="rBQ-lS-gxX" id="YWh-Bd-OcC"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem image="right_triangle.png" width="40" style="plain" id="zq0-9R-4ak">
+                                        <connections>
+                                            <action selector="forward:" destination="rBQ-lS-gxX" id="7fZ-9w-iQS"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="WDR-dS-GGM" firstAttribute="top" secondItem="xrl-9w-mG8" secondAttribute="top" type="default" id="1fz-T2-GBS"/>
+                            <constraint firstItem="YE9-yr-FHl" firstAttribute="leading" secondItem="xrl-9w-mG8" secondAttribute="leading" type="default" id="OTm-Xw-KWF"/>
+                            <constraint firstItem="YE9-yr-FHl" firstAttribute="top" secondItem="WDR-dS-GGM" secondAttribute="bottom" type="default" id="iZv-bb-361"/>
+                            <constraint firstItem="YE9-yr-FHl" firstAttribute="bottom" secondItem="xrl-9w-mG8" secondAttribute="bottom" type="default" id="p70-5y-GcW"/>
+                            <constraint firstItem="YE9-yr-FHl" firstAttribute="trailing" secondItem="xrl-9w-mG8" secondAttribute="trailing" type="default" id="qkc-99-JrY"/>
+                            <constraint firstItem="WDR-dS-GGM" firstAttribute="trailing" secondItem="xrl-9w-mG8" secondAttribute="trailing" type="default" id="xma-1y-OMe"/>
+                            <constraint firstItem="WDR-dS-GGM" firstAttribute="leading" secondItem="xrl-9w-mG8" secondAttribute="leading" type="default" id="zC9-fF-NdW"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="uuD-PV-7Fa"/>
+                    <connections>
+                        <outlet property="webView" destination="WDR-dS-GGM" id="ZWF-64-KbV"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Eil-nl-Vsc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="99" y="493"/>
+        </scene>
         <!--Master View Controller - Master-->
         <scene sceneID="18">
             <objects>
@@ -93,6 +142,9 @@
                                                 <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             </state>
+                                            <connections>
+                                                <segue destination="rBQ-lS-gxX" kind="push" identifier="web" id="8tj-Qe-GDe"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -190,7 +242,7 @@
             </objects>
             <point key="canvasLocation" x="483" y="486"/>
         </scene>
-        <!--Tags View Controller - Hashtags-->
+        <!--Tags View Controller - Tags-->
         <scene sceneID="2Ja-FL-Fa9">
             <objects>
                 <tableViewController id="CF7-aq-x3a" customClass="BTKTagsViewController" sceneMemberID="viewController">
@@ -269,7 +321,7 @@
                             </tableViewCell>
                         </prototypes>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Hashtags" id="l5S-QA-3nq"/>
+                    <navigationItem key="navigationItem" title="Tags" id="l5S-QA-3nq"/>
                     <connections>
                         <outlet property="navBarItem" destination="l5S-QA-3nq" id="DtC-ce-S0N"/>
                     </connections>
@@ -296,6 +348,8 @@
     </scenes>
     <resources>
         <image name="Default.png" width="320" height="480"/>
+        <image name="left_triangle.png" width="50" height="50"/>
+        <image name="right_triangle.png" width="50" height="50"/>
     </resources>
     <classes>
         <class className="BTKMasterViewController" superclassName="UITableViewController">
@@ -305,6 +359,14 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/BTKTagsViewController.h"/>
             <relationships>
                 <relationship kind="outlet" name="navBarItem" candidateClass="UINavigationItem"/>
+            </relationships>
+        </class>
+        <class className="BTKWebViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/BTKWebViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="back:"/>
+                <relationship kind="action" name="forward:"/>
+                <relationship kind="outlet" name="webView" candidateClass="UIWebView"/>
             </relationships>
         </class>
         <class className="NSLayoutConstraint" superclassName="NSObject">
