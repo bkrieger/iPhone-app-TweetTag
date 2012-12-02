@@ -1,5 +1,5 @@
 //
-//  MyApplication.m
+//  BTKApplication.m
 //  TweetTag
 //
 //  Created by Brandon Krieger on 12/2/12.
