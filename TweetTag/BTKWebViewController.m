@@ -29,11 +29,11 @@ typedef enum {
 {
     if ( self = [super init] )
     {
-        backButton    = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"back.png"] style:UIBarButtonItemStylePlain target:self action:@selector(goBack)];
+        backButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"back.png"] style:UIBarButtonItemStylePlain target:self action:@selector(goBack)];
         forwardButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"forward.png"] style:UIBarButtonItemStylePlain target:self action:@selector(goForward)];
         actionButton  = [[UIBarButtonItem	alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(doAction)];
         
-        toolbar           = [UIToolbar new];
+        toolbar = [UIToolbar new];
         toolbar.barStyle  = UIBarStyleDefault;
         
         [toolbar sizeToFit];
