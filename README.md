@@ -21,4 +21,4 @@ Search for TweetTag in the App Store!
 
 ## License
 
-Copyright (c) <2012> <Brandon Krieger>
+Copyright (c) 2012 Brandon Krieger
