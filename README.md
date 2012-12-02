@@ -1,1 +1,5 @@
-README to be added.
+# TweetTag
+
+## How to use TweetTag
+
+## How it works
