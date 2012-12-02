@@ -13,6 +13,7 @@
 		C55F694E166B3BC200809935 /* back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C55F694C166B3BC200809935 /* back@2x.png */; };
 		C55F6951166B3BC800809935 /* forward.png in Resources */ = {isa = PBXBuildFile; fileRef = C55F694F166B3BC800809935 /* forward.png */; };
 		C55F6952166B3BC800809935 /* forward@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C55F6950166B3BC800809935 /* forward@2x.png */; };
+		C55F695D166B493E00809935 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = C55F695C166B493E00809935 /* README.md */; };
 		C585577F166AE85D00BE2470 /* BTKWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C585577E166AE85D00BE2470 /* BTKWebViewController.m */; };
 		C5A0001A1669A0D000409B61 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5A000191669A0D000409B61 /* ImageIO.framework */; };
 		C5A000201669ADFE00409B61 /* white_tag.png in Resources */ = {isa = PBXBuildFile; fileRef = C5A0001E1669ADFE00409B61 /* white_tag.png */; };
@@ -41,6 +42,7 @@
 		C55F694F166B3BC800809935 /* forward.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = forward.png; sourceTree = "<group>"; };
 		C55F6950166B3BC800809935 /* forward@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "forward@2x.png"; sourceTree = "<group>"; };
 		C55F6953166B465700809935 /* BTKApplication.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BTKApplication.h; sourceTree = "<group>"; };
+		C55F695C166B493E00809935 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		C585577D166AE85D00BE2470 /* BTKWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTKWebViewController.h; sourceTree = "<group>"; };
 		C585577E166AE85D00BE2470 /* BTKWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTKWebViewController.m; sourceTree = "<group>"; };
 		C5A000191669A0D000409B61 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
@@ -87,6 +89,7 @@
 		C5A1540A1662B52C00871F13 = {
 			isa = PBXGroup;
 			children = (
+				C55F695C166B493E00809935 /* README.md */,
 				C5A1541F1662B52C00871F13 /* TweetTag */,
 				C5A154181662B52C00871F13 /* Frameworks */,
 				C5A154161662B52C00871F13 /* Products */,
@@ -219,6 +222,7 @@
 				C55F694E166B3BC200809935 /* back@2x.png in Resources */,
 				C55F6951166B3BC800809935 /* forward.png in Resources */,
 				C55F6952166B3BC800809935 /* forward@2x.png in Resources */,
+				C55F695D166B493E00809935 /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
