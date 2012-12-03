@@ -17,5 +17,6 @@
 @property UIBarButtonItem *addButton;
 @property UIBarButtonItem *cancelButton;
 @property UIBarButtonItem *saveButton;
+@property UILabel *instructionsLabel;
 
 @end

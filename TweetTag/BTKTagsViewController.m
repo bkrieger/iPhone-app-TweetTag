@@ -21,6 +21,11 @@
     _dictObjects = [NSMutableDictionary dictionaryWithDictionary:[defaults dictionaryForKey:@"tags"]];
     _objects = [NSMutableArray arrayWithArray:[_dictObjects allKeys]];
     [_objects sortUsingSelector:@selector(compare:)];
+    if(_objects.count == 0) {
+        [self.view addSubview:self.instructionsLabel];
+    } else {
+        [self.instructionsLabel removeFromSuperview];
+    }
     [self.tableView reloadData];
 }
 
@@ -38,6 +43,12 @@
     self.cancelButton = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStylePlain target:self action:@selector(cancel)];
     
     self.saveButton = [[UIBarButtonItem alloc] initWithTitle:@"Save" style:UIBarButtonItemStylePlain target:self action:@selector(save)];
+    
+    self.instructionsLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 320, 100)];
+    self.instructionsLabel.text = @"Tap + to add a hashtag.";
+    self.instructionsLabel.textAlignment = NSTextAlignmentCenter;
+    self.instructionsLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:16.0];
+    self.instructionsLabel.textColor = [UIColor lightGrayColor];
     
     self.navBarItem.leftBarButtonItem = self.doneButton;
     self.navBarItem.rightBarButtonItem = self.addButton;
@@ -114,6 +125,12 @@
             
             [[NSUserDefaults standardUserDefaults] synchronize];
             
+            if(_objects.count == 0) {
+                [self.view addSubview:self.instructionsLabel];
+            } else {
+                [self.instructionsLabel removeFromSuperview];
+            }
+            
         }
     }
 }
@@ -170,6 +187,8 @@
         [self.tableView reloadData];
         [(UITextField*)[[self.tableView cellForRowAtIndexPath:indexPath] viewWithTag:1] becomeFirstResponder];
 
+        [self.instructionsLabel removeFromSuperview];
+
     }
 }
 
@@ -187,6 +206,11 @@
     
     self.navBarItem.leftBarButtonItem = self.doneButton;
     self.navBarItem.rightBarButtonItem = self.addButton;
+    if(_objects.count == 0) {
+        [self.view addSubview:self.instructionsLabel];
+    } else {
+        [self.instructionsLabel removeFromSuperview];
+    }
 }
 
 - (BOOL) isValidHashtag:(NSString*) tag {
