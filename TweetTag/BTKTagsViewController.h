@@ -8,7 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
-@interface BTKTagsViewController : UITableViewController
+@interface BTKTagsViewController : UITableViewController <UITextFieldDelegate> {
+    
+}
 @property (weak, nonatomic) IBOutlet UINavigationItem *navBarItem;
 @property BOOL isAdding;
 @property UIBarButtonItem *doneButton;

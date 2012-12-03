@@ -240,5 +240,10 @@
     }
 
 }
+
+-(BOOL)textFieldShouldReturn:(UITextField *)textField{
+    [self save];
+    return YES;
+}
 @end
 
