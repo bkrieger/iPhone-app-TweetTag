@@ -17,7 +17,7 @@ The file BTKWebViewController.m is handles the UIWebView that opens whenever a l
 
 ## Availability
 
-Search for TweetTag in the App Store!
+Pending Apple approval, TweetTag should be available in the App Store by the end of 2012!
 
 ## License
 
