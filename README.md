@@ -22,4 +22,5 @@ Pending Apple approval, TweetTag should be available in the App Store by the end
 ## License
 
 Copyright (c) 2012 Brandon Krieger
+
 Contact me at brandontkrieger@gmail.com with any questions.
