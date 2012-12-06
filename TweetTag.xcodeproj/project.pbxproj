@@ -321,6 +321,7 @@
 		C5A1543D1662B52C00871F13 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Brandon Krieger";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -332,6 +333,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "64CC6A7C-AE59-4C0D-ACAF-D631D9227B1C";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -339,6 +341,7 @@
 		C5A1543E1662B52C00871F13 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Brandon Krieger";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -350,6 +353,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "64CC6A7C-AE59-4C0D-ACAF-D631D9227B1C";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
