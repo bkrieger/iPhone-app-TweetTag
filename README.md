@@ -17,10 +17,10 @@ The file BTKWebViewController.m is handles the UIWebView that opens whenever a l
 
 ## Availability
 
-TweetTag is available in the App Store!
+TweetTag was available in the App Store from December 2012 to March 2013. It is temporarily unavailable because of the deprecation of Twitter API v1. If there is demand, I will update the app to support v1.1 of the API at some point in the future. However, this cannot occur until Twitter updates v1.1 of the API to support Application Authentication. Without this support, users would need to login to Twitter to use TweetTag.
 
 ## License
 
-Copyright (c) 2012 Brandon Krieger
+Copyright (c) 2013 Brandon Krieger
 
 Contact me at brandontkrieger@gmail.com with any questions.
